@@ -228,7 +228,7 @@ public class DataImporter {
         System.out.println("=".repeat(40));
         
         // Test data line from restaurant tips dataset (6 columns)
-        String testLine = "16.99,1.01,Female,Sun,Dinner,2";
+        String testLine = "16.99,1.01,Female,No,Sun,Dinner,2";
         
         // Test countCommas method
         System.out.println("1. Testing countCommas method:");
