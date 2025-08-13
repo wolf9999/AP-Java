@@ -20,10 +20,6 @@ This dataset is available publicly on Kaggle for educational and research purpos
 | `time` | Categorical | Time of day (Lunch/Dinner) |
 | `size` | Numerical | Party size (number of people) |
 
-**Total Columns**: 6 ✅ (meets 3-8 requirement)  
-**Numerical Columns**: 3 ✅ (meets 2+ requirement)  
-**Total Records**: 244 ✅ (exceeds 10+ requirement)
-
 ## Data Representation
 
 ### What Each Row Represents
