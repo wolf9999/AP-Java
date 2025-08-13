@@ -9,7 +9,11 @@ Focus: Analyzing Factors Influencing Tips in a Restaurant Setting
 ## License and Usage Rights
 This dataset is available publicly on Kaggle for educational and research purposes as well as data science analysis projects. Since it's hosted on Kaggle's public platform, it is appropriate for academic coursework like AP Java projects.
 
-## Dataset Properties
+
+### What Each Row Represents
+Each row in the dataset represents **one restaurant dining transaction** 
+
+### Column Headers/Representation
 
 | Column Name | Data Type | Description |
 |------------|-----------|-------------|
@@ -20,13 +24,8 @@ This dataset is available publicly on Kaggle for educational and research purpos
 | `time` | Categorical | Time of day (Lunch/Dinner) |
 | `size` | Numerical | Party size (number of people) |
 
-## Data Representation
-
-### What Each Row Represents
-Each row in the dataset represents **one restaurant dining transaction** 
-
 ### Java Class Design
-To store each record as an object, I designed a `RestaurantTip` class with the following fields:
+To store each record as an object, I would design a `RestaurantTip` class with the following fields:
 
 | CSV Column | Java Field | Data Type | Reasoning |
 |------------|------------|-----------|-----------|
@@ -76,7 +75,8 @@ restaurant-tips-analysis/
 └── docs/
     └── analysis-results.md
 ```
-## Expected Outcomes
+## Analysis
+
 
 ## Citation
 ```
