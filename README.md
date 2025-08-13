@@ -16,18 +16,20 @@ This dataset is available publicly on Kaggle for educational and research purpos
 | `total_bill` | Numerical | Total bill amount in dollars |
 | `tip` | Numerical | Tip amount given in dollars |
 | `sex` | Categorical | Customer gender |
-| `smoker` | Categorical | Whether customer is a smoker |
 | `day` | Categorical | Day of the week |
 | `time` | Categorical | Time of day (Lunch/Dinner) |
 | `size` | Numerical | Party size (number of people) |
+
+**Total Columns**: 6 ✅ (meets 3-8 requirement)  
+**Numerical Columns**: 3 ✅ (meets 2+ requirement)  
+**Total Records**: 244 ✅ (exceeds 10+ requirement)
 
 ## Data Representation
 
 ### What Each Row Represents
 Each row in the dataset represents **one restaurant dining transaction** - a complete record of a single table's bill, tip, and dining details from a restaurant.
 
-
-### Class Design
+### Java Class Design
 To store each record as an object, I designed a `RestaurantTip` class with the following fields:
 
 | CSV Column | Java Field | Data Type | Reasoning |
@@ -35,11 +37,9 @@ To store each record as an object, I designed a `RestaurantTip` class with the f
 | `total_bill` | `totalBill` | `double` | Money values need decimal precision |
 | `tip` | `tipAmount` | `double` | Money values need decimal precision |
 | `sex` | `customerGender` | `String` | Text data (Male/Female) |
-| `smoker` | `isSmoker` | `boolean` | Yes/No converts to true/false |
 | `day` | `dayOfWeek` | `String` | Text data (Sun, Mon, etc.) |
 | `time` | `mealTime` | `String` | Text data (Lunch/Dinner) |
 | `size` | `partySize` | `int` | Whole number of people |
-
 
 ### UML Class Diagram
 ```
@@ -49,7 +49,6 @@ To store each record as an object, I designed a `RestaurantTip` class with the f
 │ - totalBill: double                 │
 │ - tipAmount: double                 │
 │ - customerGender: String            │
-│ - isSmoker: boolean                 │
 │ - dayOfWeek: String                 │
 │ - mealTime: String                  │
 │ - partySize: int                    │
@@ -59,7 +58,6 @@ To store each record as an object, I designed a `RestaurantTip` class with the f
 │ + getTotalBill(): double            │
 │ + getTipAmount(): double            │
 │ + getCustomerGender(): String       │
-│ + getIsSmoker(): boolean            │
 │ + getDayOfWeek(): String            │
 │ + getMealTime(): String             │
 │ + getPartySize(): int               │
@@ -69,7 +67,6 @@ To store each record as an object, I designed a `RestaurantTip` class with the f
 │ + [all setters and standard methods]│
 └─────────────────────────────────────┘
 ```
-
 ## Project Structure
 ```
 restaurant-tips-analysis/
@@ -83,19 +80,11 @@ restaurant-tips-analysis/
 └── docs/
     └── analysis-results.md
 ```
-
 ## Expected Outcomes
-The analysis should reveal insights about:
-- Correlation between bill amounts and tips
-- Demographic influences on tipping behavior
-- Seasonal/temporal patterns in restaurant tipping
-- Statistical relationships between multiple variables
 
 ## Citation
 ```
 Badole, S. Restaurant Tips Dataset. Kaggle. 
 https://www.kaggle.com/datasets/saurabhbadole/restaurant-tips-dataset
 ```
-
----
 
