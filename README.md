@@ -23,7 +23,7 @@ This dataset is available publicly on Kaggle for educational and research purpos
 ## Data Representation
 
 ### What Each Row Represents
-Each row in the dataset represents **one restaurant dining transaction** - a complete record of a single table's bill, tip, and dining details from a restaurant.
+Each row in the dataset represents **one restaurant dining transaction** 
 
 ### Java Class Design
 To store each record as an object, I designed a `RestaurantTip` class with the following fields:
