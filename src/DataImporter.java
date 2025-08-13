@@ -1,4 +1,8 @@
-
+/*
+*@wolf9999 [Janani]
+*@version 1.0
+*@since 2025
+*/
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,13 +27,6 @@ public class DataImporter {
     
     private static final String DATA_FILE = "data/tips.csv";
     
-    /**
-     * Counts the number of commas in a given string.
-     * This method is used to determine how many fields are in a CSV line.
-     * 
-     * @param line the CSV line to analyze
-     * @return the number of commas found in the line
-     */
     public static int countCommas(String line) {
         // Handle null or empty strings
         if (line == null || line.isEmpty()) {
@@ -46,14 +43,7 @@ public class DataImporter {
         return count;
     }
     
-    /**
-     * Extracts the value from a specific column in a CSV line.
-     * Uses 0-based indexing (first column is index 0).
-     * 
-     * @param line the CSV line containing comma-separated values
-     * @param columnIndex the 0-based index of the column to extract
-     * @return the value at the specified column, or empty string if invalid
-     */
+   
     public static String getColumnValue(String line, int columnIndex) {
         // Handle null or empty input
         if (line == null || line.isEmpty()) {
@@ -87,12 +77,7 @@ public class DataImporter {
         return "";
     }
     
-    /**
-     * Displays a menu of data analysis options and returns the user's choice.
-     * Uses 1-based indexing for user-friendly menu options.
-     * 
-     * @return the user's menu choice (1-based), or -1 if invalid input
-     */
+
     public static int chooseDataPoint() {
         Scanner scanner = new Scanner(System.in);
         
@@ -128,13 +113,7 @@ public class DataImporter {
             return -1;
         }
     }
-    
-    /**
-     * Analyzes data from the CSV file by calculating min, max, and average
-     * for a user-selected numerical column.
-     * 
-     * @throws FileNotFoundException if the data file cannot be found
-     */
+  
     public static void analyzeData() throws FileNotFoundException {
         // Get user's column choice
         int choice = chooseDataPoint();
@@ -243,11 +222,7 @@ public class DataImporter {
         }
     }
     
-    /**
-     * Test method to verify all implemented methods work correctly.
-     * This method demonstrates the functionality of countCommas, getColumnValue,
-     * and chooseDataPoint methods with sample data.
-     */
+   
     public static void testMethods() {
         System.out.println("TESTING DATAIMPORTER METHODS");
         System.out.println("=".repeat(40));
@@ -283,11 +258,7 @@ public class DataImporter {
         System.out.println("   (Interactive menu will appear)");
     }
     
-    /**
-     * Main method to run the data analysis program.
-     * 
-     * @param args command line arguments (not used)
-     */
+    
     public static void main(String[] args) {
         System.out.println("RESTAURANT TIPS DATA ANALYZER");
         System.out.println("AP Computer Science A - Data Analysis Project");
