@@ -3,14 +3,12 @@
 *@version 1.0
 *@since 2025
 */
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class DataImporter {
-    
-    // Constants for the restaurant tips dataset (WITH smoker column)
+
     private static final String[] COLUMN_NAMES = {
         "total_bill", "tip", "sex", "smoker", "day", "time", "size"
     };
@@ -28,13 +26,11 @@ public class DataImporter {
     private static final String DATA_FILE = "data/tips.csv";
     
     public static int countCommas(String line) {
-        // Handle null or empty strings
         if (line == null || line.isEmpty()) {
             return 0;
         }
         
         int count = 0;
-        // Iterate through each character in the line
         for (int i = 0; i < line.length(); i++) {
             if (line.charAt(i) == ',') {
                 count++;
@@ -45,26 +41,20 @@ public class DataImporter {
     
    
     public static String getColumnValue(String line, int columnIndex) {
-        // Handle null or empty input
         if (line == null || line.isEmpty()) {
             return "";
         }
         
-        // Handle negative column index
         if (columnIndex < 0) {
             return "";
         }
         
-        // Manual parsing without using split() to avoid arrays
         int currentColumn = 0;
         int startIndex = 0;
-        
-        // Find the start and end of the desired column
+
         for (int i = 0; i <= line.length(); i++) {
-            // Check if we've reached a comma or end of string
             if (i == line.length() || line.charAt(i) == ',') {
                 if (currentColumn == columnIndex) {
-                    // Found the desired column, extract the value
                     String value = line.substring(startIndex, i);
                     return value.trim();
                 }
@@ -73,7 +63,6 @@ public class DataImporter {
             }
         }
         
-        // Column index was too high
         return "";
     }
     
@@ -81,13 +70,11 @@ public class DataImporter {
     public static int chooseDataPoint() {
         Scanner scanner = new Scanner(System.in);
         
-        // Display the menu header
         System.out.println("\n" + "=".repeat(60));
         System.out.println("        RESTAURANT TIPS DATA ANALYSIS MENU");
         System.out.println("=".repeat(60));
         System.out.println();
         
-        // Display menu options with descriptions (only numerical columns)
         System.out.println("Choose a numerical column to analyze:");
         System.out.println("1. " + COLUMN_DESCRIPTIONS[0] + " (" + COLUMN_NAMES[0] + ")");
         System.out.println("2. " + COLUMN_DESCRIPTIONS[1] + " (" + COLUMN_NAMES[1] + ")");
@@ -99,8 +86,7 @@ public class DataImporter {
         
         try {
             int choice = scanner.nextInt();
-            
-            // Validate the choice range
+
             if (choice >= 0 && choice <= 3) {
                 return choice;
             } else {
@@ -109,13 +95,13 @@ public class DataImporter {
             }
         } catch (Exception e) {
             System.out.println("Invalid input. Please enter a number.");
-            scanner.nextLine(); // Clear the invalid input
+            scanner.nextLine(); 
             return -1;
         }
     }
   
     public static void analyzeData() throws FileNotFoundException {
-        // Get user's column choice
+
         int choice = chooseDataPoint();
         
         if (choice == 0) {
@@ -127,34 +113,30 @@ public class DataImporter {
             System.out.println("Invalid choice. Please try again.");
             return;
         }
-        
-        // Map user choice to column index (1-based to 0-based conversion)
+
         int columnIndex;
         String columnName;
         if (choice == 1) {
-            columnIndex = 0; // total_bill
+            columnIndex = 0; 
             columnName = COLUMN_NAMES[0];
         } else if (choice == 2) {
-            columnIndex = 1; // tip
+            columnIndex = 1; 
             columnName = COLUMN_NAMES[1];
         } else if (choice == 3) {
-            columnIndex = 6; // size (now at index 6 with smoker included)
+            columnIndex = 6; 
             columnName = COLUMN_NAMES[6];
         } else {
             System.out.println("Invalid choice.");
             return;
         }
         
-        // Open file for reading
         File file = new File(DATA_FILE);
         Scanner fileScanner = new Scanner(file);
-        
-        // Skip header line
+
         if (fileScanner.hasNextLine()) {
             fileScanner.nextLine();
         }
         
-        // Initialize statistics variables
         double min = Double.MAX_VALUE;
         double max = Double.MIN_VALUE;
         double sum = 0.0;
@@ -163,29 +145,26 @@ public class DataImporter {
         System.out.println("\nAnalyzing column: " + columnName);
         System.out.println("Processing data...\n");
         
-        // Process each data line
+
         while (fileScanner.hasNextLine()) {
             String line = fileScanner.nextLine();
             
-            // Skip empty lines
+   
             if (line.trim().isEmpty()) {
                 continue;
             }
             
-            // Validate line has correct number of commas
             if (countCommas(line) != COLUMN_NAMES.length - 1) {
                 System.out.println("Warning: Skipping malformed line: " + line);
                 continue;
             }
             
-            // Extract the value from the specified column
             String valueString = getColumnValue(line, columnIndex);
             
             try {
-                // Convert string to double for numerical analysis
                 double value = Double.parseDouble(valueString);
                 
-                // Update statistics
+
                 if (value < min) {
                     min = value;
                 }
@@ -202,7 +181,6 @@ public class DataImporter {
         
         fileScanner.close();
         
-        // Calculate and display results
         if (count > 0) {
             double average = sum / count;
             
@@ -227,10 +205,8 @@ public class DataImporter {
         System.out.println("TESTING DATAIMPORTER METHODS");
         System.out.println("=".repeat(40));
         
-        // Test data line from restaurant tips dataset (6 columns)
         String testLine = "16.99,1.01,Female,No,Sun,Dinner,2";
         
-        // Test countCommas method
         System.out.println("1. Testing countCommas method:");
         System.out.println("   Test Line: " + testLine);
         System.out.println("   Number of commas: " + countCommas(testLine));
@@ -238,7 +214,6 @@ public class DataImporter {
         System.out.println("   Result: " + (countCommas(testLine) == COLUMN_NAMES.length - 1 ? "PASS" : "FAIL"));
         System.out.println();
         
-        // Test getColumnValue method
         System.out.println("2. Testing getColumnValue method:");
         for (int i = 0; i < COLUMN_NAMES.length; i++) {
             String value = getColumnValue(testLine, i);
@@ -246,7 +221,6 @@ public class DataImporter {
         }
         System.out.println();
         
-        // Test edge cases
         System.out.println("3. Testing edge cases:");
         System.out.println("   Empty string commas: " + countCommas(""));
         System.out.println("   Null string commas: " + countCommas(null));

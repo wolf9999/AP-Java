@@ -1,6 +1,5 @@
 public class Main {
     public static void main(String[] args) {
-        // Create a sample RestaurantTip object
         RestaurantTip tip = new RestaurantTip(
             50.0,     // totalBill
             7.5,      // tipAmount
